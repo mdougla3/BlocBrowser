@@ -99,6 +99,7 @@
     [textField resignFirstResponder];
     NSString *URLString = textField.text;
     NSURL *URL = [NSURL URLWithString:URLString];
+    NSRange URLrange = [URLString rangeOfString: @" "];
     
     if (!URL.scheme) {
         // The user didn't type http: or https:
@@ -106,6 +107,14 @@
     }
     
     if (URL) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        [self.webView loadRequest:request];
+        
+    }
+    
+    if (URLrange.location != NSNotFound) {
+        NSString *googleURLString = [URLString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+        URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/search?q=%@",googleURLString]];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         [self.webView loadRequest:request];
     }
