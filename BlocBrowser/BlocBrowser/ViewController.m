@@ -64,6 +64,11 @@
         [mainView addSubview:viewToAdd];
     }
     
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert" message:@"Welcome to the BlocBrowser" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
     self.view = mainView;
 }
 
