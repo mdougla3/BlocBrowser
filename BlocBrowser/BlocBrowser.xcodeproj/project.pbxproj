@@ -13,6 +13,7 @@
 		22ED8CFE1B30F40800A428B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22ED8CFD1B30F40800A428B5 /* Images.xcassets */; };
 		22ED8D011B30F40800A428B5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22ED8CFF1B30F40800A428B5 /* LaunchScreen.xib */; };
 		22ED8D0D1B30F40800A428B5 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8D0C1B30F40800A428B5 /* BlocBrowserTests.m */; };
+		C56A85481B40E04800B9DA51 /* AwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A85471B40E04800B9DA51 /* AwesomeFloatingToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		22ED8D061B30F40800A428B5 /* BlocBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22ED8D0B1B30F40800A428B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22ED8D0C1B30F40800A428B5 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
+		C56A85461B40E04800B9DA51 /* AwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeFloatingToolbar.h; sourceTree = "<group>"; };
+		C56A85471B40E04800B9DA51 /* AwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeFloatingToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 				22ED8CF51B30F40800A428B5 /* AppDelegate.m */,
 				22ED8CF71B30F40800A428B5 /* ViewController.h */,
 				22ED8CF81B30F40800A428B5 /* ViewController.m */,
+				C56A85461B40E04800B9DA51 /* AwesomeFloatingToolbar.h */,
+				C56A85471B40E04800B9DA51 /* AwesomeFloatingToolbar.m */,
 				22ED8CFD1B30F40800A428B5 /* Images.xcassets */,
 				22ED8CFF1B30F40800A428B5 /* LaunchScreen.xib */,
 				22ED8CF01B30F40800A428B5 /* Supporting Files */,
@@ -218,6 +223,7 @@
 				22ED8CF91B30F40800A428B5 /* ViewController.m in Sources */,
 				22ED8CF61B30F40800A428B5 /* AppDelegate.m in Sources */,
 				22ED8CF31B30F40800A428B5 /* main.m in Sources */,
+				C56A85481B40E04800B9DA51 /* AwesomeFloatingToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
