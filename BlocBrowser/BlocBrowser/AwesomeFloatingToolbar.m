@@ -16,6 +16,8 @@
 @property (nonatomic, weak) UILabel *currentLabel;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
 
 
 @end
@@ -40,7 +42,7 @@
         // Make the 4 labels
         for (NSString *currentTitle in self.currentTitles) {
             UILabel *label = [[UILabel alloc] init];
-            label.userInteractionEnabled = NO;
+            label.userInteractionEnabled = YES;
             label.alpha = 0.25;
             
             NSUInteger currentTitleIndex = [self.currentTitles indexOfObject:currentTitle]; // 0 through 3
@@ -57,7 +59,7 @@
         }
         
         self.labels = labelsArray;
-        
+                
         for (UILabel *thisLabel in self.labels) {
             [self addSubview:thisLabel];
         }
@@ -65,14 +67,39 @@
         [self addGestureRecognizer:self.tapGesture];
         self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panFired:)];
         [self addGestureRecognizer:self.panGesture];
+        self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchFired:)];
+        [self addGestureRecognizer:self.pinchGesture];
+        self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressFired:)];
+        [self addGestureRecognizer:self.longPressGesture];
     }
     
     return self;
 }
 
+-(void) longPressFired:(UILongPressGestureRecognizer *) recognizer {
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        
+        
+        
+        
+        CGPoint location = [recognizer locationInView:self];
+        UIView *tappedView = [self hitTest:location withEvent:nil];
+    
+        if ([self.labels containsObject:tappedView]) {
+            if ([self.delegate respondsToSelector:@selector(floatingToolbar:didLongPress:)]) {
+                [self.delegate floatingToolbar:self didLongPress:true];
+                
+            }
+        }
+        
+    }
+}
+
+
 - (void) tapFired:(UITapGestureRecognizer *) recognizer {
     
     if (recognizer.state == UIGestureRecognizerStateRecognized) {
+
         
         CGPoint location = [recognizer locationInView:self];
         UIView *tappedView = [self hitTest:location withEvent:nil];
@@ -83,13 +110,25 @@
             }
         }
     }
+    
+}
+
+-(void) pinchFired:(UIPinchGestureRecognizer *) recognizer {
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        CGFloat scale = [recognizer scale];
+        
+        if ([self.delegate respondsToSelector:@selector(floatingToolbar:didTryToPinchwithScale:)]) {
+            [self.delegate floatingToolbar:self didTryToPinchwithScale:scale];
+        }
+        [recognizer setScale:scale];
+    }
 }
 
 - (void) panFired:(UIPanGestureRecognizer *) recognizer {
     
     if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [recognizer translationInView:self];
-        NSLog(@"New Translation %@", NSStringFromCGPoint(translation));
         
         if ([self.delegate respondsToSelector:@selector(floatingToolbar:didTryToPanWithOffset:)]) {
             [self.delegate floatingToolbar:self didTryToPanWithOffset:translation];

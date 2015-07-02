@@ -84,8 +84,8 @@
 			children = (
 				22ED8CF41B30F40800A428B5 /* AppDelegate.h */,
 				22ED8CF51B30F40800A428B5 /* AppDelegate.m */,
-				22ED8CF71B30F40800A428B5 /* ViewController.h */,
 				22ED8CF81B30F40800A428B5 /* ViewController.m */,
+				22ED8CF71B30F40800A428B5 /* ViewController.h */,
 				C56A85461B40E04800B9DA51 /* AwesomeFloatingToolbar.h */,
 				C56A85471B40E04800B9DA51 /* AwesomeFloatingToolbar.m */,
 				22ED8CFD1B30F40800A428B5 /* Images.xcassets */,

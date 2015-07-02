@@ -72,7 +72,6 @@
     // Now, assign the frames
     self.textField.frame = CGRectMake(0, 0, width, itemHeight);
     self.webView.frame = CGRectMake(0, CGRectGetMaxY(self.textField.frame), width, browserHeight);
-    self.awesomeToolbar.frame = CGRectMake(0, 50, width, 60);
     
   }
 
@@ -155,6 +154,7 @@
     
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+    self.awesomeToolbar.frame = CGRectMake(0, 50, 240, 60);
 }
 
 # pragma mark - Clear Search History
@@ -185,7 +185,14 @@
     } else if ([title isEqual:kWebBrowserRefreshString]) {
         [self.webView reload];
     }
+    
 }
+
+-(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didLongPress:(BOOL)didPress {
+    
+    toolbar.backgroundColor = [UIColor greenColor];
+}
+
 
 -(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset {
     
@@ -199,15 +206,17 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
+-(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPinchwithScale:(CGFloat)scale {
+    
+    CGPoint startingPoint = toolbar.frame.origin;
+    CGPoint newPoint = CGPointMake(startingPoint.x, startingPoint.y);
+    
+    CGRect potentialNewFrame = CGRectMake(newPoint.x, newPoint.y, CGRectGetWidth(toolbar.frame) * scale, CGRectGetHeight(toolbar.frame) * scale);
+    
+    if (CGRectContainsRect(self.view.bounds, potentialNewFrame)) {
+        toolbar.frame = potentialNewFrame;
+    }
+}
 
 
 

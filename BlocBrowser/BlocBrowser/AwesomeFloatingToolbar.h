@@ -14,16 +14,18 @@
 
 @optional
 
-- (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title;
+-(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title;
 -(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset;
+-(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPinchwithScale:(CGFloat)scale;
+-(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didLongPress:(BOOL)didPress;
 
 @end
 
 @interface AwesomeFloatingToolbar : UIView
 
-- (instancetype) initWithFourTitles:(NSArray *)titles;
+-(instancetype) initWithFourTitles:(NSArray *)titles;
 
-- (void) setEnabled:(BOOL)enabled forButtonWithTitle:(NSString *)title;
+-(void) setEnabled:(BOOL)enabled forButtonWithTitle:(NSString *)title;
 
 @property (nonatomic, weak) id <AwesomeFloatingToolbarDelegate> delegate;
 
