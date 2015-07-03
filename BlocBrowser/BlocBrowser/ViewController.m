@@ -19,8 +19,8 @@
 
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UITextField *textField;
-@property (nonatomic, strong) AwesomeFloatingToolbar *awesomeToolbar;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) AwesomeFloatingToolbar *awesomeToolbar;
 
 @end
 
@@ -44,6 +44,7 @@
     self.textField.backgroundColor = [UIColor colorWithWhite:220/255.0f alpha:1];
     self.textField.delegate = self;
     
+    
     self.awesomeToolbar = [[AwesomeFloatingToolbar alloc] initWithFourTitles:@[kWebBrowserBackString, kWebBrowserForwardString, kWebBrowserRefreshString, kWebBrowserStopString]];
     self.awesomeToolbar.delegate = self;
     
@@ -57,6 +58,8 @@
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
+    
+    self.awesomeToolbar.frame = CGRectMake(20, 100, 280, 60);
     
     self.view = mainView;
 }
@@ -72,6 +75,8 @@
     // Now, assign the frames
     self.textField.frame = CGRectMake(0, 0, width, itemHeight);
     self.webView.frame = CGRectMake(0, CGRectGetMaxY(self.textField.frame), width, browserHeight);
+    
+    
     
   }
 
@@ -154,7 +159,7 @@
     
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-    self.awesomeToolbar.frame = CGRectMake(0, 50, 240, 60);
+    //self.awesomeToolbar.frame = CGRectMake(0, 50, 240, 60);
 }
 
 # pragma mark - Clear Search History
